@@ -108,10 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Observe project cards and other elements
-    const projectCards = document.querySelectorAll('.project-card');
+    const projectCardsForAnimation = document.querySelectorAll('.project-card');
     const aboutText = document.querySelectorAll('.about-text p');
     
-    projectCards.forEach(card => {
+    projectCardsForAnimation.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -123,6 +123,103 @@ document.addEventListener('DOMContentLoaded', () => {
         text.style.transform = 'translateY(20px)';
         text.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
         observer.observe(text);
+    });
+
+    // Apply custom positioning to project images
+    // Supports both predefined keywords (handled by CSS) and custom values (e.g., "50% 30%", "100px 50px")
+    const projectImages = document.querySelectorAll('.project-image[data-position]');
+    projectImages.forEach(img => {
+        const position = img.getAttribute('data-position');
+        // If it's not a predefined keyword, apply it directly as object-position
+        const predefinedKeywords = ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'center'];
+        if (!predefinedKeywords.includes(position)) {
+            img.style.objectPosition = position;
+        }
+    });
+
+    // Project Modal Functionality
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalTags = document.getElementById('modalTags');
+    const modalLink = document.getElementById('modalLink');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    function openModal(card) {
+        const content = card.querySelector('.project-content');
+        const image = content.querySelector('.project-image');
+        const title = content.querySelector('.project-title');
+        const description = content.querySelector('.project-description');
+        const tags = content.querySelectorAll('.tag');
+        const link = content.querySelector('.project-link');
+
+        // Populate modal with project data
+        modalImage.src = image.src;
+        modalImage.alt = image.alt;
+        modalImage.setAttribute('data-position', image.getAttribute('data-position') || 'center');
+        modalTitle.textContent = title.textContent;
+        modalDescription.textContent = description.textContent;
+        modalLink.href = link.href;
+        modalLink.textContent = link.textContent;
+
+        // Clear and populate tags
+        modalTags.innerHTML = '';
+        tags.forEach(tag => {
+            const tagElement = document.createElement('span');
+            tagElement.className = 'tag';
+            tagElement.textContent = tag.textContent;
+            modalTags.appendChild(tagElement);
+        });
+
+        // Apply image positioning to modal image
+        const position = modalImage.getAttribute('data-position');
+        const predefinedKeywords = ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'center'];
+        if (!predefinedKeywords.includes(position)) {
+            modalImage.style.objectPosition = position;
+        } else {
+            modalImage.style.objectPosition = '';
+        }
+
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Add click event listeners to project cards
+    projectCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Don't open modal if clicking on the project link
+            if (e.target.closest('.project-link')) {
+                return;
+            }
+            openModal(card);
+        });
+    });
+
+    // Close modal when clicking close button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking outside the modal content
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal when pressing ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
     });
 });
 
