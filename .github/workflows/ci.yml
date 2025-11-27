@@ -70,6 +70,75 @@ jobs:
           html-validator --file index.html --format=text || echo "HTML validation completed with warnings"
         continue-on-error: true
 
+      - name: Validate CSS syntax
+        run: |
+          echo "Validating CSS syntax..."
+          npm install -g css-validator
+          css-validator --file styles.css || echo "CSS validation completed with warnings"
+        continue-on-error: true
+
+      - name: Check meta tags
+        run: |
+          echo "Checking essential meta tags..."
+          grep -q 'name="viewport"' index.html && echo "✓ Viewport meta tag found" || (echo "⚠ Viewport meta tag missing (recommended)" && exit 0)
+          grep -q 'name="description"' index.html && echo "✓ Description meta tag found" || (echo "⚠ Description meta tag missing (recommended)" && exit 0)
+          grep -q 'rel="icon"' index.html && echo "✓ Favicon found" || (echo "⚠ Favicon missing (recommended)" && exit 0)
+
+      - name: Check image sizes
+        run: |
+          echo "Checking image file sizes..."
+          large_found=0
+          for img in images/*.{jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF} 2>/dev/null; do
+            if [ -f "$img" ]; then
+              size=$(stat -c%s "$img" 2>/dev/null || echo "0")
+              if [ "$size" -gt 1048576 ]; then
+                size_kb=$((size / 1024))
+                echo "⚠ Large image: $img (${size_kb}KB) - consider optimizing"
+                large_found=1
+              fi
+            fi
+          done
+          if [ $large_found -eq 0 ]; then
+            echo "✓ All images are reasonably sized (<1MB)"
+          fi
+        continue-on-error: true
+
+      - name: Check file sizes
+        run: |
+          echo "Checking main file sizes..."
+          html_size=$(stat -c%s index.html 2>/dev/null || echo "0")
+          css_size=$(stat -c%s styles.css 2>/dev/null || echo "0")
+          js_size=$(stat -c%s script.js 2>/dev/null || echo "0")
+          html_kb=$((html_size / 1024))
+          css_kb=$((css_size / 1024))
+          js_kb=$((js_size / 1024))
+          echo "HTML: ${html_kb}KB"
+          echo "CSS: ${css_kb}KB"
+          echo "JS: ${js_kb}KB"
+          total=$((html_size + css_size + js_size))
+          if [ "$total" -gt 524288 ]; then
+            echo "⚠ Total file size exceeds 512KB - consider optimization"
+          else
+            echo "✓ Total file size is reasonable"
+          fi
+        continue-on-error: true
+
+      - name: Basic accessibility checks
+        run: |
+          echo "Running basic accessibility checks..."
+          # Check for alt attributes on images
+          images_without_alt=$(grep -c '<img[^>]*src=' index.html | grep -v 'alt=' || echo "0")
+          if [ "$images_without_alt" -gt 0 ]; then
+            echo "⚠ Some images may be missing alt attributes"
+          else
+            echo "✓ Image alt attributes check passed"
+          fi
+          # Check for heading hierarchy
+          grep -q '<h1' index.html && echo "✓ H1 tag found" || echo "⚠ No H1 tag found"
+          # Check for lang attribute
+          grep -q 'lang=' index.html && echo "✓ Language attribute found" || echo "⚠ Language attribute missing"
+        continue-on-error: true
+
       - name: Check for broken internal links
         run: |
           echo "Checking for broken internal links..."
