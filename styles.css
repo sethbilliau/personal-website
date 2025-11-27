@@ -107,6 +107,24 @@ body {
     background-color: var(--text-color);
 }
 
+.nav-button {
+    padding: 8px 20px;
+    border: 1px solid var(--text-color);
+    background-color: transparent;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.nav-button::after {
+    display: none;
+}
+
+.nav-button:hover {
+    background-color: var(--text-color);
+    color: white;
+    opacity: 1;
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
