@@ -579,6 +579,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 1.5rem;
     background-color: white;
@@ -588,6 +589,7 @@ section {
     box-shadow: none;
     transition: var(--transition);
     min-width: 120px;
+    min-height: 120px;
     border: 1px solid var(--border-color);
 }
 
@@ -599,6 +601,27 @@ section {
 
 .contact-icon {
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+}
+
+.contact-icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.contact-icon-image {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+}
+
+.contact-link > span:last-child {
+    text-align: center;
+    line-height: 1.2;
 }
 
 .contact-phone {
