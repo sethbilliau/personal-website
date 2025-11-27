@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seth Billiau's Personal Website">
+    <title>Seth Billiau</title>
+    <link rel="icon" type="image/png" href="images/sbicon_edited.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo">Seth Billiau</a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Me</a></li>
+                    <li><a href="#featured-projects" class="nav-link">Featured Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#interests" class="nav-link">Interests</a></li>
+                    <li><a href="#more-projects" class="nav-link">More</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="images/headshot1_edited.jpg" alt="Seth Billiau" class="hero-image">
+                <h1 class="hero-title">Seth Billiau</h1>
+                <p class="hero-subtitle">Welcome to Seth's Personal Website</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Hi, I'm Seth!</h2>
+            <div class="about-content">
+                <img src="images/IMG_6948_edited.jpg" alt="Seth Billiau" class="about-image">
+                <div class="about-text">
+                    <p>
+                        I am a graduate of Harvard University with a Bachelor of Arts in Statistics (Data Science) 
+                        and a minor in Government. Raised in Grand Rapids, Michigan, I gained experience as a 
+                        political organizer and campaign manager, leveraging data to win important local elections 
+                        during the competitive 2016, 2018, and 2020 election cycles. Now, I work as a data scientist, 
+                        bringing my passion, technical know-how, and strong communication skills to new challenges 
+                        at Booz Allen Hamilton.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="featured-projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Modeling | Visualization | Analysis</p>
+            <div class="projects-grid">
+                <div class="project-card featured-card">
+                    <div class="project-content">
+                        <img src="images/0001.jpg" alt="Citadel Datathon" class="project-image">
+                        <h3 class="project-title">Winner of Citadel's Boston Regional Datathon</h3>
+                        <p class="project-description">
+                            In Spring 2021, my team earned first place in Citadel's Boston Regional Datathon, 
+                            receiving a $20,000 prize and entry into the international Data Open Championship. 
+                            COVID-19 was the theme of the Boston Regional Datathon, and our submission explored 
+                            the relationship between public trust in government and excess mortality from COVID-19.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Data Science</span>
+                            <span class="tag">COVID-19</span>
+                            <span class="tag">Analysis</span>
+                        </div>
+                        <a href="https://seas.harvard.edu/news/2021/03/harvard-team-wins-boston-regional-datathon" class="project-link" target="_blank">Read More →</a>
+                    </div>
+                </div>
+                <div class="project-card featured-card">
+                    <div class="project-content">
+                        <img src="images/10kiterations.gif" alt="Gibbs Sampling Visualization" class="project-image">
+                        <h3 class="project-title">Gibbs Sampling Explained</h3>
+                        <p class="project-description">
+                            Published with Towards Data Science. In my first article published with Towards Data Science, 
+                            I crafted a visual explanation of how Gibbs sampling works. Gibbs sampling is one of the most 
+                            popular Markov Chain Monte Carlo (MCMC) algorithms with applications in Bayesian statistics, 
+                            computational linguistics, political science, and more.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">MCMC</span>
+                            <span class="tag">Bayesian Statistics</span>
+                            <span class="tag">Data Science</span>
+                        </div>
+                        <a href="https://towardsdatascience.com/gibbs-sampling-explained-b271f332ed8d/" class="project-link" target="_blank">Full Article →</a>
+                    </div>
+                </div>
+                <div class="project-card featured-card">
+                    <div class="project-content">
+                        <img src="images/main.png" alt="Ballot Roll Off Map" class="project-image">
+                        <h3 class="project-title">Ballot Roll Off in Kent County, MI</h3>
+                        <p class="project-description">
+                            This QGIS web map was a project commissioned by 6 County Commission candidates in Kent County, MI. 
+                            It shows precinct-by-precinct election results for all partisan races in the 2018 November general 
+                            election. This app helped candidates identify precincts that were susceptible to down-ballot roll-off.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">QGIS</span>
+                            <span class="tag">Web Mapping</span>
+                            <span class="tag">Political Data</span>
+                        </div>
+                        <a href="https://sethbilliau.github.io/ballot-roll-off-kent-county/" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Projects Section -->
+    <section id="more-projects" class="projects more-projects">
+        <div class="container">
+            <h2 class="section-title">More Projects</h2>
+            <p class="section-subtitle">My full portfolio of data science and data visualization projects</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/history_NN.png" alt="PCR Classification" class="project-image">
+                        <h3 class="project-title">PCR Classification Using Gene Expression</h3>
+                        <p class="project-description">
+                            Creating ANNs, Random Forests, and XGBoost techniques to predict pathological complete 
+                            response (pCR) from gene expression.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">R</span>
+                        </div>
+                        <a href="https://github.com/sethbilliau/pcr-classification" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/featureimp.jpeg" alt="Permutation Feature Importance" class="project-image">
+                        <h3 class="project-title">From Scratch: Permutation Feature Importance for ML Interpretability</h3>
+                        <p class="project-description">
+                            Use permutation feature importance to discover which features in your dataset are useful 
+                            for prediction. Published in Towards Data Science.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="https://towardsdatascience.com/from-scratch-permutation-feature-importance-for-ml-interpretability-3b7b3edfe2b" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/player_viz.png" alt="Ivy League Basketball" class="project-image">
+                        <h3 class="project-title">Visualizing Ivy League Basketball</h3>
+                        <p class="project-description">
+                            R Shiny app on 2020 Ivy League Men's Basketball statistics with interactive visualizations 
+                            for easy comparison.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">R</span>
+                        </div>
+                        <a href="https://sbilliau.shinyapps.io/ivy-league-basketball/" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/mentalhealth.png" alt="Mental Health in Tech" class="project-image">
+                        <h3 class="project-title">Mental Health in the Tech Industry</h3>
+                        <p class="project-description">
+                            Visualizing the culture surrounding mental health in the tech industry with D3.js.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">D3.js</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Javascript</span>
+                        </div>
+                        <a href="https://sethbilliau.github.io/mental-health-tech/" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/spotify_icon.png" alt="Spotify Cold Start" class="project-image">
+                        <h3 class="project-title">Exploring the Cold Start Problem via Spotify</h3>
+                        <p class="project-description">
+                            Using content-based filtering and k-Means clustering to generate Spotify playlists from a "cold start."
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="https://sethbilliau.github.io/spotify-cold-start/" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/gen.png" alt="Population Genetics" class="project-image">
+                        <h3 class="project-title">Population Genetics</h3>
+                        <p class="project-description">
+                            R Shiny app exploring population genetics through a series of interactive simulations.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">R</span>
+                        </div>
+                        <a href="https://sbilliau.shinyapps.io/population-genetics/" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/segmented_final.png" alt="Three Point Shots" class="project-image">
+                        <h3 class="project-title">3 Point Shooting Trends in the NCAA</h3>
+                        <p class="project-description">
+                            Analyzing Trends in the NCAA 3 Point Shooting from 2003 to 2019 using Hierarchical linear modeling.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">R</span>
+                        </div>
+                        <a href="https://github.com/sethbilliau/ncaa-3pt-trends" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/harv.jpg" alt="Harvard Club Finances" class="project-image">
+                        <h3 class="project-title">Funding Disparities in Harvard Club Finances</h3>
+                        <p class="project-description">
+                            Funding disparities and accountability issues in the Harvard Undergraduate Council Finance 
+                            Committee grant process.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="https://medium.com/@sethbilliau/funding-disparities-in-harvard-club-finances" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/worldpoolmasters.jpeg" alt="World Pool Masters" class="project-image">
+                        <h3 class="project-title">2021 World Pool Masters Predictions</h3>
+                        <p class="project-description">
+                            Using Elo and FargoRate systems to simulate & predict the 2021 World Pool Masters tournament. 
+                            Medium article with an R Shiny companion app.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">R</span>
+                        </div>
+                        <a href="https://medium.com/@sethbilliau/2021-world-pool-masters-predictions" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="images/rtex.png" alt="RTex with Overleaf" class="project-image">
+                        <h3 class="project-title">RTex with Overleaf: A Beautiful Alternative to RMD</h3>
+                        <p class="project-description">
+                            A Medium article with everything you need to know about Rtex files, how to make them, and how 
+                            Rtex compares with R Markdown.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">R</span>
+                            <span class="tag">LaTeX</span>
+                        </div>
+                        <a href="https://medium.com/@sethbilliau/rtex-with-overleaf" class="project-link" target="_blank">Project Website →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Background & Expertise</p>
+            <img src="images/DS6_0300.JPG" alt="Experience" class="section-image">
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Data Scientist, Consultant, Booz Allen Hamilton</h3>
+                        <span class="experience-date">July 2021 - Present</span>
+                    </div>
+                    <p class="experience-description">
+                        Hired as a member of the Strategic Innovation Group (SIG) to develop algorithms, write scripts, 
+                        use automation, and find answers to help clients make important decisions.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Legislative Aide, Michigan House of Representatives</h3>
+                        <span class="experience-date">April 2020 - September 2020</span>
+                    </div>
+                    <p class="experience-description">
+                        Lobbied state lawmakers in favor of restorative justice legislation including reforms to expungement 
+                        of public criminal records, drug sentencing guidelines, and cash bail. Problem-solved during the 
+                        COVID-19 crisis by connecting constituents to services like the Michigan eviction diversion and 
+                        food assistance programs.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Teaching Fellow/Course Assistant, Harvard University</h3>
+                        <span class="experience-date">September 2018 - May 2021</span>
+                    </div>
+                    <p class="experience-description">
+                        Instructed undergraduate and graduate students in a variety of quantitative topics from linear algebra 
+                        and real analysis to Markov Chains and statistical inference. Recipient of the Derek Bok Center Certificate 
+                        of Distinction and Excellence in Teaching in Fall 2018 and Spring 2019.
+                    </p>
+                    <p class="experience-courses">
+                        <strong>Courses:</strong> Linear Algebra and Real Analysis I, Mathematics for Computation and Data Science, 
+                        Intro to Probability, Intro to Statistical Inference
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Summer Campaigns Fellow, Michigan House Democratic Fund</h3>
+                        <span class="experience-date">May 2018 - August 2018</span>
+                    </div>
+                    <p class="experience-description">
+                        Coordinated campaign operations for State House and County Commission campaigns in Western Michigan. 
+                        Raised over $40,000 in 3 months. Kept 2 State House seats and flipped 2 County Commission seats.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Director of Communications/Campaigns Director, One Michigan Alliance</h3>
+                        <span class="experience-date">March 2017 - September 2017</span>
+                    </div>
+                    <p class="experience-description">
+                        Liaised with candidates to impact policy and help progressives win elections in West Michigan. 
+                        Communicated with media to publicize events and wrote press releases and notifications.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">District Staff, Michigan State Representative David LaGrand</h3>
+                        <span class="experience-date">March 2017 - September 2017</span>
+                    </div>
+                    <p class="experience-description">
+                        Overhauled the representative's contact database and fundraising infrastructure using R and NGPVAN. 
+                        Raised over $26,000 in 3 months. Supervised a research team to further the Representative's legislative goals.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Campaign Manager, Phil Skaggs for County Commission</h3>
+                        <span class="experience-date">August 2016 - November 2016</span>
+                    </div>
+                    <p class="experience-description">
+                        Managed all campaign staff and volunteers while organizing daily canvassing events. Served as the candidate's 
+                        primary advisor on strategy and tactics using data analytics to target voters. Raised over $33,000 in 3 months 
+                        and filed appropriate campaign finance reports. Won election by 1,057 votes over a three-term incumbent.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Lead Intern, Hillary for America – West Michigan</h3>
+                        <span class="experience-date">February 2016 - May 2016</span>
+                    </div>
+                    <p class="experience-description">
+                        Responsible for managing and running phone banks. Main point of contact for volunteers. Organized events with 
+                        notable guests including Chelsea Clinton.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">What I've Learned</p>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-title">Harvard University</h3>
+                        <span class="education-date">August 2017 - May 2021</span>
+                    </div>
+                    <p class="education-description">
+                        A.B. in Statistics (Data Science) with a secondary in Government with Honors. 2018 & 2020 John Harvard Scholar, 
+                        Detur Book Prize recipient.
+                    </p>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-title">Study Abroad: University of Oxford</h3>
+                        <span class="education-date">June 2019 - August 2019</span>
+                    </div>
+                    <p class="education-description">
+                        Study Abroad coursework in evolutionary biology and population genetics at Queen's College. Created an R Shiny 
+                        app to teach introductory population genetics with interactive simulations.
+                    </p>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-title">Grand Rapids Christian High School</h3>
+                        <span class="education-date">September 2013 - May 2017</span>
+                    </div>
+                    <p class="education-description">
+                        Valedictorian, National Merit Finalist, Congressional Medal of Merit Recipient, 2-time State Champion/National 
+                        Quarterfinalist Public Speaker
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests" class="interests">
+        <div class="container">
+            <h2 class="section-title">Interests and Hobbies</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <img src="images/hodpboard.jpg" alt="Harvard College Open Data Project" class="interest-image">
+                    <h3 class="interest-title">Harvard College Open Data Project</h3>
+                    <p class="interest-role">Vice President/Treasurer Emeritus</p>
+                </div>
+                <div class="interest-card">
+                    <img src="images/collegium.JPG" alt="Harvard-Radcliffe Collegium Musicum" class="interest-image">
+                    <h3 class="interest-title">Harvard-Radcliffe Collegium Musicum</h3>
+                    <p class="interest-role">Financial Manager Emeritus and Bass II Alum</p>
+                </div>
+                <div class="interest-card">
+                    <img src="images/sports.JPG" alt="Sports" class="interest-image">
+                    <h3 class="interest-title">Avid Sports Fan</h3>
+                    <p class="interest-role">Go Red Sox!</p>
+                </div>
+                <div class="interest-card">
+                    <img src="images/Oxf_idwaal - 9.jpg" alt="The Great Outdoors" class="interest-image">
+                    <h3 class="interest-title">The Great Outdoors</h3>
+                    <p class="interest-role">Hiking, Backpacking, and Traveling!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <p class="contact-description">
+                    I'd love to hear from you! Whether you have a question, want to collaborate, 
+                    or just say hello, feel free to reach out.
+                </p>
+                <div class="contact-methods">
+                    <a href="mailto:sethbilliau@gmail.com" class="contact-link">
+                        <span class="contact-icon">✉️</span>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://linkedin.com/in/sethbilliau" class="contact-link" target="_blank">
+                        <span class="contact-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/sethbilliau" class="contact-link" target="_blank">
+                        <span class="contact-icon">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <p class="contact-phone">616-443-3973</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Seth Billiau. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
