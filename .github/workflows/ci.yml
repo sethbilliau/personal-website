@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, project-updates ]
+  pull_request:
+    branches: [ main, master, project-updates ]
+
+jobs:
+  validate:
+    name: Validate Website
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check file structure
+        run: |
+          echo "Checking required files exist..."
+          test -f index.html && echo "✓ index.html exists" || (echo "✗ index.html missing" && exit 1)
+          test -f styles.css && echo "✓ styles.css exists" || (echo "✗ styles.css missing" && exit 1)
+          test -f script.js && echo "✓ script.js exists" || (echo "✗ script.js missing" && exit 1)
+
+      - name: Validate JavaScript syntax
+        run: |
+          echo "Validating JavaScript syntax..."
+          node -c script.js && echo "✓ JavaScript syntax is valid" || (echo "✗ JavaScript syntax error" && exit 1)
+
+      - name: Check image references
+        run: |
+          echo "Checking for missing image files..."
+          # Extract image references from HTML, handling spaces properly
+          # Use a temporary approach to handle filenames with spaces
+          missing=0
+          # Create temp file with image paths (one per line, preserving spaces)
+          grep -oP 'src="images/[^"]*"' index.html 2>/dev/null | sed 's/src="images\///' | sed 's/"$//' | sed 's/%20/ /g' | sort -u > /tmp/image_refs.txt || true
+          
+          if [ ! -s /tmp/image_refs.txt ]; then
+            echo "No images referenced in HTML"
+          else
+            while IFS= read -r img; do
+              if [ -n "$img" ]; then
+                # Properly quote the filename to handle spaces
+                if [ ! -f "images/$img" ]; then
+                  echo "✗ Missing image: images/$img"
+                  missing=1
+                fi
+              fi
+            done < /tmp/image_refs.txt
+            
+            if [ $missing -eq 1 ]; then
+              echo "Some referenced images are missing"
+              exit 1
+            else
+              echo "✓ All referenced images exist (including those with spaces)"
+            fi
+            rm -f /tmp/image_refs.txt
+          fi
+
+      - name: Validate HTML
+        run: |
+          echo "Validating HTML..."
+          npm install -g html-validator
+          html-validator --file index.html --format=text || echo "HTML validation completed with warnings"
+        continue-on-error: true
+
+      - name: Check for broken internal links
+        run: |
+          echo "Checking for broken internal links..."
+          # Check that all anchor links point to existing sections
+          anchors=$(grep -oP 'href="#[^"]*"' index.html 2>/dev/null | sed 's/href="#//' | sed 's/"//' | sort -u || true)
+          sections=$(grep -oP 'id="[^"]*"' index.html 2>/dev/null | sed 's/id="//' | sed 's/"//' | sort -u || true)
+          if [ -z "$anchors" ]; then
+            echo "No internal links found"
+          else
+            broken=0
+            for anchor in $anchors; do
+              if [ -n "$anchor" ] && ! echo "$sections" | grep -q "^${anchor}$"; then
+                echo "✗ Broken internal link: #${anchor}"
+                broken=1
+              fi
+            done
+            if [ $broken -eq 1 ]; then
+              echo "Some internal links are broken"
+              exit 1
+            else
+              echo "✓ All internal links are valid"
+            fi
+          fi
+
+      - name: Basic HTML structure check
+        run: |
+          echo "Checking HTML structure..."
+          # Check for basic HTML5 structure
+          grep -q "<!DOCTYPE html>" index.html && echo "✓ DOCTYPE declaration found" || (echo "✗ Missing DOCTYPE" && exit 1)
+          grep -q "<html" index.html && echo "✓ HTML tag found" || (echo "✗ Missing HTML tag" && exit 1)
+          grep -q "<head" index.html && echo "✓ Head tag found" || (echo "✗ Missing head tag" && exit 1)
+          grep -q "<body" index.html && echo "✓ Body tag found" || (echo "✗ Missing body tag" && exit 1)
+          grep -q "<title" index.html && echo "✓ Title tag found" || (echo "✗ Missing title tag" && exit 1)
+
