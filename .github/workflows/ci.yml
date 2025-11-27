@@ -35,24 +35,32 @@ jobs:
       - name: Check image references
         run: |
           echo "Checking for missing image files..."
-          # Extract image references from HTML
-          images=$(grep -oP 'src="images/[^"]*"' index.html 2>/dev/null | sed 's/src="images\///' | sed 's/"//' | sort -u || true)
-          if [ -z "$images" ]; then
+          # Extract image references from HTML, handling spaces properly
+          # Use a temporary approach to handle filenames with spaces
+          missing=0
+          # Create temp file with image paths (one per line, preserving spaces)
+          grep -oP 'src="images/[^"]*"' index.html 2>/dev/null | sed 's/src="images\///' | sed 's/"$//' | sed 's/%20/ /g' | sort -u > /tmp/image_refs.txt || true
+          
+          if [ ! -s /tmp/image_refs.txt ]; then
             echo "No images referenced in HTML"
           else
-            missing=0
-            for img in $images; do
-              if [ -n "$img" ] && [ ! -f "images/$img" ]; then
-                echo "✗ Missing image: images/$img"
-                missing=1
+            while IFS= read -r img; do
+              if [ -n "$img" ]; then
+                # Properly quote the filename to handle spaces
+                if [ ! -f "images/$img" ]; then
+                  echo "✗ Missing image: images/$img"
+                  missing=1
+                fi
               fi
-            done
+            done < /tmp/image_refs.txt
+            
             if [ $missing -eq 1 ]; then
               echo "Some referenced images are missing"
               exit 1
             else
-              echo "✓ All referenced images exist"
+              echo "✓ All referenced images exist (including those with spaces)"
             fi
+            rm -f /tmp/image_refs.txt
           fi
 
       - name: Validate HTML
