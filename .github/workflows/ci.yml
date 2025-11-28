@@ -35,21 +35,26 @@ jobs:
       - name: Check image references
         run: |
           echo "Checking for missing image files..."
+          echo "Images are organized in subfolders: logos/, projects/, personal/, interests/, experience/, icons/"
           # Extract image references from HTML, handling spaces properly
           # Use a temporary approach to handle filenames with spaces
           missing=0
           # Create temp file with image paths (one per line, preserving spaces)
+          # Updated to handle subdirectory structure: images/logos/, images/projects/, etc.
           grep -oP 'src="images/[^"]*"' index.html 2>/dev/null | sed 's/src="images\///' | sed 's/"$//' | sed 's/%20/ /g' | sort -u > /tmp/image_refs.txt || true
+          grep -oP "url\('images/[^']*'\)" styles.css 2>/dev/null | sed "s/url('images\///" | sed "s/')$//" | sed 's/%20/ /g' | sort -u >> /tmp/image_refs.txt || true
           
           if [ ! -s /tmp/image_refs.txt ]; then
-            echo "No images referenced in HTML"
+            echo "No images referenced in HTML or CSS"
           else
             while IFS= read -r img; do
               if [ -n "$img" ]; then
-                # Properly quote the filename to handle spaces
+                # Properly quote the filename to handle spaces and check in subdirectories
                 if [ ! -f "images/$img" ]; then
                   echo "✗ Missing image: images/$img"
                   missing=1
+                else
+                  echo "✓ Found: images/$img"
                 fi
               fi
             done < /tmp/image_refs.txt
@@ -58,7 +63,7 @@ jobs:
               echo "Some referenced images are missing"
               exit 1
             else
-              echo "✓ All referenced images exist (including those with spaces)"
+              echo "✓ All referenced images exist (including those with spaces and in subdirectories)"
             fi
             rm -f /tmp/image_refs.txt
           fi
@@ -86,16 +91,22 @@ jobs:
 
       - name: Check image sizes
         run: |
-          echo "Checking image file sizes..."
+          echo "Checking image file sizes in all subdirectories..."
+          echo "Checking: images/logos/, images/projects/, images/personal/, images/interests/, images/experience/, images/icons/"
           large_found=0
-          for img in images/*.{jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF} 2>/dev/null; do
-            if [ -f "$img" ]; then
-              size=$(stat -c%s "$img" 2>/dev/null || echo "0")
-              if [ "$size" -gt 1048576 ]; then
-                size_kb=$((size / 1024))
-                echo "⚠ Large image: $img (${size_kb}KB) - consider optimizing"
-                large_found=1
-              fi
+          # Check images in all subdirectories
+          for subdir in images/logos images/projects images/personal images/interests images/experience images/icons; do
+            if [ -d "$subdir" ]; then
+              for img in "$subdir"/*.{jpg,jpeg,png,gif,svg,JPG,JPEG,PNG,GIF,SVG} 2>/dev/null; do
+                if [ -f "$img" ]; then
+                  size=$(stat -c%s "$img" 2>/dev/null || echo "0")
+                  if [ "$size" -gt 1048576 ]; then
+                    size_kb=$((size / 1024))
+                    echo "⚠ Large image: $img (${size_kb}KB) - consider optimizing"
+                    large_found=1
+                  fi
+                fi
+              done
             fi
           done
           if [ $large_found -eq 0 ]; then
