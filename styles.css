@@ -659,6 +659,94 @@ section {
     font-size: 0.95rem;
 }
 
+/* Certifications Section */
+.certifications {
+    background-color: var(--bg-light);
+}
+
+.certifications-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.certification-item {
+    background-color: white;
+    border-radius: 0;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: none;
+    border-left: 2px solid var(--border-color);
+    transition: var(--transition);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.certification-item:hover {
+    border-left-color: var(--text-color);
+}
+
+.certification-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.certification-header-text {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.certification-title {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-color);
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.certification-organization {
+    color: var(--text-light);
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+
+.certification-date {
+    color: var(--text-light);
+    font-weight: 300;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.certification-description {
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    font-size: 0.95rem;
+}
+
+.certification-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 400;
+    transition: var(--transition);
+    display: inline-block;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 2px;
+}
+
+.certification-link:hover {
+    color: var(--text-light);
+    border-bottom-color: var(--text-light);
+}
+
 /* Interests Section */
 .interests {
     background-color: var(--bg-light);
@@ -1003,7 +1091,8 @@ section {
     }
 
     .experience-header,
-    .education-header {
+    .education-header,
+    .certification-header {
         flex-direction: row;
         gap: 1rem;
     }
@@ -1015,12 +1104,14 @@ section {
     }
 
     .experience-header-text,
-    .education-header-text {
+    .education-header-text,
+    .certification-header-text {
         min-width: auto;
     }
 
     .experience-date,
-    .education-date {
+    .education-date,
+    .certification-date {
         white-space: normal;
     }
 
