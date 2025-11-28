@@ -467,18 +467,46 @@ section {
 
 .experience-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     margin-bottom: 1rem;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
+}
+
+.experience-logo-wrapper {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+}
+
+.experience-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.experience-header-text {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .experience-title {
     font-size: 1.2rem;
     font-weight: 400;
     color: var(--text-color);
-    margin: 0;
+    margin: 0 0 0.5rem 0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -533,18 +561,46 @@ section {
 
 .education-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     margin-bottom: 1rem;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
+}
+
+.education-logo-wrapper {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+}
+
+.education-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.education-header-text {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .education-title {
     font-size: 1.2rem;
     font-weight: 400;
     color: var(--text-color);
-    margin: 0;
+    margin: 0 0 0.5rem 0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -783,7 +839,19 @@ section {
 
     .experience-header,
     .education-header {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .experience-logo-wrapper,
+    .education-logo-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .experience-header-text,
+    .education-header-text {
+        min-width: auto;
     }
 
     .experience-date,
