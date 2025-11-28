@@ -71,6 +71,14 @@
     </section>
 
     <!-- Featured Projects Section -->
+    <!-- 
+        Project Image Positioning:
+        All project images are now consistently sized (250px height). 
+        To adjust image positioning within the frame, use the data-position attribute:
+        - Predefined: "top", "bottom", "left", "right", "top-left", "top-right", "bottom-left", "bottom-right", "center"
+        - Custom: Any valid CSS object-position value (e.g., "50% 30%", "100px 50px", "left 20%")
+        Example: <img ... class="project-image" data-position="top">
+    -->
     <section id="featured-projects" class="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
@@ -78,7 +86,7 @@
             <div class="projects-grid">
                 <div class="project-card featured-card">
                     <div class="project-content">
-                        <img src="images/0001.jpg" alt="Citadel Datathon" class="project-image">
+                        <img src="images/0001.jpg" alt="Citadel Datathon" class="project-image" data-position="center">
                         <h3 class="project-title">Winner of Citadel's Boston Regional Datathon</h3>
                         <p class="project-description">
                             In Spring 2021, my team earned first place in Citadel's Boston Regional Datathon, 
@@ -96,7 +104,7 @@
                 </div>
                 <div class="project-card featured-card">
                     <div class="project-content">
-                        <img src="images/10kiterations.gif" alt="Gibbs Sampling Visualization" class="project-image">
+                        <img src="images/10kiterations.gif" alt="Gibbs Sampling Visualization" class="project-image" data-position="center">
                         <h3 class="project-title">Gibbs Sampling Explained</h3>
                         <p class="project-description">
                             Published with Towards Data Science. In my first article published with Towards Data Science, 
@@ -114,7 +122,7 @@
                 </div>
                 <div class="project-card featured-card">
                     <div class="project-content">
-                        <img src="images/main.png" alt="Ballot Roll Off Map" class="project-image">
+                        <img src="images/main.png" alt="Ballot Roll Off Map" class="project-image" data-position="center">
                         <h3 class="project-title">Ballot Roll Off in Kent County, MI</h3>
                         <p class="project-description">
                             This QGIS web map was a project commissioned by 6 County Commission candidates in Kent County, MI. 
@@ -141,7 +149,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/history_NN.png" alt="PCR Classification" class="project-image">
+                        <img src="images/history_NN.png" alt="PCR Classification" class="project-image" data-position="center">
                         <h3 class="project-title">PCR Classification Using Gene Expression</h3>
                         <p class="project-description">
                             Creating ANNs, Random Forests, and XGBoost techniques to predict pathological complete 
@@ -156,7 +164,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/featureimp.jpeg" alt="Permutation Feature Importance" class="project-image">
+                        <img src="images/featureimp.jpeg" alt="Permutation Feature Importance" class="project-image" data-position="center">
                         <h3 class="project-title">From Scratch: Permutation Feature Importance for ML Interpretability</h3>
                         <p class="project-description">
                             Use permutation feature importance to discover which features in your dataset are useful 
@@ -170,7 +178,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/player_viz.png" alt="Ivy League Basketball" class="project-image">
+                        <img src="images/player_viz.png" alt="Ivy League Basketball" class="project-image" data-position="center">
                         <h3 class="project-title">Visualizing Ivy League Basketball</h3>
                         <p class="project-description">
                             R Shiny app on 2020 Ivy League Men's Basketball statistics with interactive visualizations 
@@ -184,7 +192,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/mentalhealth.png" alt="Mental Health in Tech" class="project-image">
+                        <img src="images/mentalhealth.png" alt="Mental Health in Tech" class="project-image" data-position="center">
                         <h3 class="project-title">Mental Health in the Tech Industry</h3>
                         <p class="project-description">
                             Visualizing the culture surrounding mental health in the tech industry with D3.js.
@@ -200,7 +208,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/spotify_icon.png" alt="Spotify Cold Start" class="project-image">
+                        <img src="images/spotify_icon.png" alt="Spotify Cold Start" class="project-image" data-position="center">
                         <h3 class="project-title">Exploring the Cold Start Problem via Spotify</h3>
                         <p class="project-description">
                             Using content-based filtering and k-Means clustering to generate Spotify playlists from a "cold start."
@@ -213,7 +221,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/gen.png" alt="Population Genetics" class="project-image">
+                        <img src="images/gen.png" alt="Population Genetics" class="project-image" data-position="center">
                         <h3 class="project-title">Population Genetics</h3>
                         <p class="project-description">
                             R Shiny app exploring population genetics through a series of interactive simulations.
@@ -226,7 +234,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/segmented_final.png" alt="Three Point Shots" class="project-image">
+                        <img src="images/segmented_final.png" alt="Three Point Shots" class="project-image" data-position="center">
                         <h3 class="project-title">3 Point Shooting Trends in the NCAA</h3>
                         <p class="project-description">
                             Analyzing Trends in the NCAA 3 Point Shooting from 2003 to 2019 using Hierarchical linear modeling.
@@ -239,7 +247,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/harv.jpg" alt="Harvard Club Finances" class="project-image">
+                        <img src="images/harv.jpg" alt="Harvard Club Finances" class="project-image" data-position="center">
                         <h3 class="project-title">Funding Disparities in Harvard Club Finances</h3>
                         <p class="project-description">
                             Funding disparities and accountability issues in the Harvard Undergraduate Council Finance 
@@ -253,7 +261,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/worldpoolmasters.jpeg" alt="World Pool Masters" class="project-image">
+                        <img src="images/worldpoolmasters.jpeg" alt="World Pool Masters" class="project-image" data-position="center">
                         <h3 class="project-title">2021 World Pool Masters Predictions</h3>
                         <p class="project-description">
                             Using Elo and FargoRate systems to simulate & predict the 2021 World Pool Masters tournament. 
@@ -268,7 +276,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <img src="images/rtex.png" alt="RTex with Overleaf" class="project-image">
+                        <img src="images/rtex.png" alt="RTex with Overleaf" class="project-image" data-position="center">
                         <h3 class="project-title">RTex with Overleaf: A Beautiful Alternative to RMD</h3>
                         <p class="project-description">
                             A Medium article with everything you need to know about Rtex files, how to make them, and how 
@@ -550,6 +558,20 @@
             <p>&copy; <span id="currentYear"></span> by Seth Billiau. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Project Modal -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <div class="modal-content">
+                <img src="" alt="" class="modal-image" id="modalImage">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="modal-tags" id="modalTags"></div>
+                <a href="#" class="modal-link" id="modalLink" target="_blank">View Project →</a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
