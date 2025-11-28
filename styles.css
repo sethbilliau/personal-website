@@ -276,7 +276,6 @@ section {
     margin-bottom: 0.5rem;
     color: var(--text-color);
     letter-spacing: -0.5px;
-    text-transform: uppercase;
 }
 
 .section-subtitle {
